@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1a1a2e;
+      margin-bottom: 28px;
+      font-size: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 28px;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #222;
+      transition: border-color 0.2s;
+      outline: none;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    textarea { min-height: 100px; }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button[type="submit"]:hover { background: #4338ca; }
+
+    /* To-Do list */
+    #todo-list { list-style: none; }
+
+    #todo-list li {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .todo-text { flex: 1; }
+
+    .todo-text strong {
+      display: block;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .todo-text span { font-size: 0.875rem; color: #666; }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: #ef4444;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+
+    .delete-btn:hover { background: #fee2e2; }
+
+    .empty-msg {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+
+    <!-- Add item form -->
+    <div class="card">
+      <h2>Add New Item</h2>
+      <form id="todo-form" action="/submit" method="POST">
+        <div class="form-group">
+          <label for="item-name">Item Name <span style="color:#ef4444">*</span></label>
+          <input type="text" id="item-name" name="item_name" placeholder="Enter item name" required />
+        </div>
+        <div class="form-group">
+          <label for="item-description">Item Description</label>
+          <textarea id="item-description" name="item_description" placeholder="Enter item description (optional)"></textarea>
+        </div>
+        <button type="submit">Add Item</button>
+      </form>
+    </div>
+
+</body>
+</html>
